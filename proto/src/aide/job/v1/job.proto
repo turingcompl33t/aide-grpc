@@ -1,0 +1,42 @@
+syntax = "proto3";
+package aide.job.v1;
+
+option go_package = "aide/proto/pkg/jobv1";
+
+import "protoc-gen-swagger/options/annotations.proto";
+
+// The enumeration over job types
+enum JobType {
+  // A CPU job
+  CPU = 0;
+  // A GPU job
+  GPU = 1;
+}
+
+// The information required to create a new job
+message JobCreate {
+  option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    json_schema: { required: [ "name", "type", "size" ] }
+  };
+
+  // The name of the job
+  string name = 1;
+  // The job type
+  JobType type = 2;
+  // The job size
+  int32 size = 3;
+}
+
+// A job represents user-submitted work.
+message Job {
+  option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    json_schema: { required: [ "name", "type", "size" ] }
+  };
+
+  // The name of the job
+  string name = 1;
+  // The job type
+  JobType type = 2;
+  // The job size
+  int32 size = 3;
+}

@@ -1,0 +1,6 @@
+env/
+__pycache__/
+.mypy_cache/
+
+proto/build/*
+proto/pkg/*

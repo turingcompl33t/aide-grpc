@@ -1,0 +1,23 @@
+syntax = "proto3";
+package aide.api.v1;
+
+option go_package = "aide/proto/pkg/apiv1";
+
+import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
+import "aide/api/v1/job.proto";
+
+// Describes the complete interface of the AIDE platform
+service AIDE {
+    // Create a new platform job
+    rpc CreateJob(CreateJobRequest) returns (CreateJobResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/job"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_swagger.options.openapiv2_operation) = {
+            tags: "package:Job"
+        };
+    }
+}

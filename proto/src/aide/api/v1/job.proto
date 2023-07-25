@@ -1,0 +1,27 @@
+syntax = "proto3";
+package aide.api.v1;
+
+option go_package = "aide/proto/pkg/apiv1";
+
+import "aide/job/v1/job.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
+// A request to create a new job
+message CreateJobRequest {
+  option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    json_schema: { required: ["job"] }
+  };
+
+  // The job
+  aide.job.v1.JobCreate job = 1;
+}
+
+// A response to job creation
+message CreateJobResponse {
+  option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+    json_schema: { required: ["job"] }
+  };
+
+  // The job
+  aide.job.v1.Job job = 1;
+}
